@@ -1,7 +1,6 @@
 class CatalogModel{
-  static final items =[
-    Item(1, "iphone 12 pro", "Apple i phone 12th generation", 999, "#33505a", "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"),
-    Item(2, "iphone 12 pro", "Apple i phone 12th generation", 999, "#33505a", "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50")
+  static List<Item> items =[
+
   ];
 
 }
@@ -16,7 +15,31 @@ class Item{
   final String color;
   final String image;
 
-  Item(this.id, this.name, this.desc, this.price, this.color, this.image);
+  Item({required this.id,required this.name,required this.desc, required this.price, required this.color, required this.image});
+
+
+  factory Item.fromMap(Map<String, dynamic> map){
+     return Item(
+       id:map["id"],
+       name:map["name"],
+       desc:map["desc"],
+       price:map["price"],
+       color:map["color"],
+       image:map["image"],
+
+     );
+  }
+
+
+toMap() => {
+    "id" :id,
+    "name" :name,
+    "desc" :desc,
+    "price":price,
+    "color" :color,
+    "image" :image,
+
+};
 
 
 }
