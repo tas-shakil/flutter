@@ -1,7 +1,8 @@
 import 'package:basic_tutorial/models/catalog.dart';
+import 'package:basic_tutorial/utils/routes.dart';
 import 'package:basic_tutorial/widgets/home_widgets/catalog_header.dart';
 import 'package:basic_tutorial/widgets/home_widgets/catalog_list.dart';
-import 'package:basic_tutorial/widgets/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -37,7 +38,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        backgroundColor: context.theme.buttonColor,
+        child: const Icon(CupertinoIcons.cart,
+        color: Colors.white),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
@@ -62,16 +69,6 @@ class _HomePageState extends State<HomePage> {
 
 
 
-class CatalogImage extends StatelessWidget {
-  final String image;
 
-  const CatalogImage({Key? key, required this.image}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-   return Image.network(
-       image
-   ).box.rounded.p16.color(MyTheme.creamColor).make().p16().w40(context);
-  }
-}
 
 
